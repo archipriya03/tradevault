@@ -9,14 +9,14 @@ const Orders = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:3002/api/orders", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/orders`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => {
         if (res.status === 401) {
-          window.location.href = "http://localhost:3000/login";
+          window.location.href = `${process.env.REACT_APP_FRONTEND_URL}/login`;
           return;
         }
         return res.json();

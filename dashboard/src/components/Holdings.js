@@ -8,7 +8,7 @@ const Holdings = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:3002/allHoldings", {
+    fetch(`${process.env.REACT_APP_API_URL}/allHoldings`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -16,7 +16,7 @@ const Holdings = () => {
       .then((res) => {
         if (res.status === 401) {
           // Token expired — send back to login
-          window.location.href = "http://localhost:3000/login";
+          window.location.href = `${process.env.REACT_APP_FRONTEND_URL}/login`;
           return;
         }
         return res.json();

@@ -36,7 +36,7 @@ function Signup() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:3002/api/auth/register", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -69,7 +69,7 @@ function Signup() {
       <div style={styles.card}>
         {/* Logo */}
         <div style={styles.logoRow}>
-          <span style={styles.logo}>Zerodha</span>
+          <span style={styles.logo}>TradeVault</span>
         </div>
 
         <h2 style={styles.title}>Open a free account</h2>

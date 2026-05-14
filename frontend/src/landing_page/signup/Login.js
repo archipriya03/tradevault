@@ -24,7 +24,7 @@ function Login() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:3002/api/auth/login", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,7 +47,7 @@ function Login() {
       // Redirect to dashboard
       const token = data.token;
 // Change this line in Login.js
-window.location.href = `http://localhost:3001?token=${data.token}&user=${encodeURIComponent(JSON.stringify(data.user))}`;
+window.location.href = `${process.env.REACT_APP_DASHBOARD_URL}?token=${data.token}&user=${encodeURIComponent(JSON.stringify(data.user))}`;
     } catch (err) {
       setError("Cannot connect to server. Make sure backend is running.");
     } finally {
@@ -60,11 +60,11 @@ window.location.href = `http://localhost:3001?token=${data.token}&user=${encodeU
       <div style={styles.card}>
         {/* Logo */}
         <div style={styles.logoRow}>
-          <span style={styles.logo}>Zerodha</span>
+          <span style={styles.logo}>TradeVault</span>
         </div>
 
         <h2 style={styles.title}>Welcome back</h2>
-        <p style={styles.sub}>Log in to your Zerodha account</p>
+        <p style={styles.sub}>Log in to your TradeVault account</p>
 
         {/* Error message */}
         {error && <div style={styles.error}>{error}</div>}
