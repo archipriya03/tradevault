@@ -8,7 +8,15 @@ const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://tradevault-frontend-1nz2.onrender.com",
+    "https://tradevault-dashboard.onrender.com",
+    "http://localhost:3000",
+    "http://localhost:3001"
+  ]
+}));
+
 app.use(bodyParser.json());
 
 // ── Models ──
